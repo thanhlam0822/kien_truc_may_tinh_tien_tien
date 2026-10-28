@@ -1,0 +1,32 @@
+# 02_I_type — coverage test for SingleCycleCPU
+# Address  Machine code  Assembly
+0x00  0x01400093  ADDI x1, x0, 20
+0x04  0x00300113  ADDI x2, x0, 3
+0x08  0xFE000593  ADDI x11, x0, -32
+0x0C  0xFFB08193  ADDI x3, x1, -5
+0x10  0x0070F213  ANDI x4, x1, 7
+0x14  0x00816293  ORI x5, x2, 8
+0x18  0x0030C313  XORI x6, x1, 3
+0x1C  0xFFF5A393  SLTI x7, x11, -1  # -32 < -1 signed
+0x20  0x0015B413  SLTIU x8, x11, 1   # unsigned 0xFFFFFFE0 < 1 is false
+0x24  0x00211493  SLLI x9, x2, 2
+0x28  0x0020D513  SRLI x10, x1, 2
+0x2C  0x4025D613  SRAI x12, x11, 2
+0x30  0x00000013  NOP padding
+0x34  0x00000013  NOP padding
+0x38  0x00000013  NOP padding
+0x3C  0x00000013  NOP padding
+
+Expected final state:
+  x1 = 0x00000014 (20)
+  x2 = 0x00000003 (3)
+  x3 = 0x0000000F (15)
+  x4 = 0x00000004 (4)
+  x5 = 0x0000000B (11)
+  x6 = 0x00000017 (23)
+  x7 = 0x00000001 (1)
+  x8 = 0x00000000 (0)
+  x9 = 0x0000000C (12)
+  x10 = 0x00000005 (5)
+  x11 = 0xFFFFFFE0 (-32)
+  x12 = 0xFFFFFFF8 (-8)

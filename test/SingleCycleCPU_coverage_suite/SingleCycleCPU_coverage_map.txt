@@ -1,0 +1,12 @@
+SINGLE-CYCLE CPU — COVERAGE PLAN
+Status at package creation: TEST PLAN CREATED; none of the five ROM programs has yet been run in this turn.
+
+Program file | Instructions proved if the test passes
+01_R_type.hex | ADD SUB AND OR XOR SLT SLTU SLL SRL SRA
+02_I_type.hex | ADDI ANDI ORI XORI SLTI SLTIU SLLI SRLI SRAI
+03_Memory_P13.hex | LW SW
+04_Branch.hex | BEQ/BNE taken and not-taken; skipped writes
+05_Jump.hex | JAL/JALR; target and link PC+4; skipped writes
+
+The five programs collectively include all 25 required instructions.
+Do not mark a row PASS just because the ROM file was created. Run each on SingleCycleCPU and compare its final state against the paired .asm.txt expected values.

@@ -1,0 +1,6 @@
+Program,Required coverage,Expected final state verified?,Observed final state,Result, Evidence screenshot,Notes
+01_R_type.hex,ADD SUB AND OR XOR SLT SLTU SLL SRL SRA,,,,,
+02_I_type.hex,ADDI ANDI ORI XORI SLTI SLTIU SLLI SRLI SRAI,,,,,
+03_Memory_P13.hex,LW SW,,,,,
+04_Branch.hex,BEQ BNE taken/not-taken,,,,,
+05_Jump.hex,JAL JALR and PC+4 link,,,,,

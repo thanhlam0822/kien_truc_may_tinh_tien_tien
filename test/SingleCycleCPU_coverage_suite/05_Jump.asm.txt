@@ -1,0 +1,28 @@
+# 05_Jump — coverage test for SingleCycleCPU
+# Address  Machine code  Assembly
+0x00  0x02000293  ADDI x5, x0, 32
+0x04  0x008000EF  JAL x1, +8
+0x08  0x06300113  ADDI x2, x0, 99  # should skip
+0x0C  0x00108193  ADDI x3, x1, 1
+0x10  0x02000313  ADDI x6, x0, 32
+0x14  0x000303E7  JALR x7, 0(x6)
+0x18  0x06300213  ADDI x4, x0, 99  # should skip
+0x1C  0x06200213  ADDI x4, x0, 98  # should skip
+0x20  0x00138413  ADDI x8, x7, 1
+0x24  0x00000013  NOP padding
+0x28  0x00000013  NOP padding
+0x2C  0x00000013  NOP padding
+0x30  0x00000013  NOP padding
+0x34  0x00000013  NOP padding
+0x38  0x00000013  NOP padding
+0x3C  0x00000013  NOP padding
+
+Expected final state:
+  x1 = 0x00000008 (JAL link)
+  x2 = 0x00000000 (skipped)
+  x3 = 0x00000009 (9)
+  x4 = 0x00000000 (skipped)
+  x5 = 0x00000020 (32)
+  x6 = 0x00000020 (32)
+  x7 = 0x00000018 (JALR link)
+  x8 = 0x00000019 (25)

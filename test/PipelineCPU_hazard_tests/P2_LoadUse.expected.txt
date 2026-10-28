@@ -1,0 +1,26 @@
+# P2_LoadUse
+# Address  Machine code  Assembly
+0x00  0x02A00093  ADDI x1, x0, 42
+0x04  0x00102023  SW x1, 0(x0)
+0x08  0x00002103  LW x2, 0(x0)
+0x0C  0x00110193  ADDI x3, x2, 1
+0x10  0x00118233  ADD x4, x3, x1
+0x14  0x00000013  NOP padding
+0x18  0x00000013  NOP padding
+0x1C  0x00000013  NOP padding
+0x20  0x00000013  NOP padding
+0x24  0x00000013  NOP padding
+0x28  0x00000013  NOP padding
+0x2C  0x00000013  NOP padding
+0x30  0x00000013  NOP padding
+0x34  0x00000013  NOP padding
+0x38  0x00000013  NOP padding
+0x3C  0x00000013  NOP padding
+
+Expected final state (after pipeline drains):
+x1: 0x0000002A (42)
+x2: 0x0000002A (42)
+x3: 0x0000002B (43)
+x4: 0x00000035 (53)
+RAM[0]: 0x0000002A (42)
+purpose: LW followed immediately by use of loaded x2; tests load-use handling.

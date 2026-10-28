@@ -1,0 +1,25 @@
+# 03_Memory_P13 — coverage test for SingleCycleCPU
+# Address  Machine code  Assembly
+0x00  0x02A00093  ADDI x1, x0, 42
+0x04  0x00102023  SW x1, 0(x0)
+0x08  0x00002103  LW x2, 0(x0)
+0x0C  0x001101B3  ADD x3, x2, x1
+0x10  0x00118213  ADDI x4, x3, 1
+0x14  0x00000013  NOP padding
+0x18  0x00000013  NOP padding
+0x1C  0x00000013  NOP padding
+0x20  0x00000013  NOP padding
+0x24  0x00000013  NOP padding
+0x28  0x00000013  NOP padding
+0x2C  0x00000013  NOP padding
+0x30  0x00000013  NOP padding
+0x34  0x00000013  NOP padding
+0x38  0x00000013  NOP padding
+0x3C  0x00000013  NOP padding
+
+Expected final state:
+  x1 = 0x0000002A (42)
+  x2 = 0x0000002A (42)
+  x3 = 0x00000054 (84)
+  x4 = 0x00000055 (85)
+  RAM[0] = 0x0000002A (42)
